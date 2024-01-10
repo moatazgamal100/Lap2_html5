@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h2>GeoLocation API</h2>
+    <button id="loc" onclick="locat()">get location</button>
+    <button id="stop" onclick="clear()">clear watch</button>
+    <hr>
+    <h2>Web Worker</h2>
+    <button id="sum">calc sum</button>
+    <button id="bg">change bg</button>
+    <hr>
+
+    <hr>
+    <h2>Web Worker 2</h2>
+    <button id="mult">calc sub</button>
+    <button id="bg2">change bg2</button>
+    <hr>
+    <h2>Form</h2>
+    <a href="signIn.html">Form Task</a>
+
+    <hr>
+    <hr>
+    <h2>MicroData</h2>
+    <div vocab="http://schema.org/" typeof="Organization">
+        <span property="name">.SD & Gaming CoE , ITI</span>
+        <span property="telephone">335695</span>
+        <a href="http://www.iti.gov.eg" property="url">http://www.iti.gov.eg</a>
+        <span property="address" typeof="PostalAddress">
+            <span property="streetAddress">km 28 Cairo - Alexandria Desert Road Smart Village Giza</span>
+            <span property="addressLocality">Giza</span>
+            <span property="addressRegion">Egypt</span>
+            <span property="postalCode">11371</span>
+            <span property="addressCountry">Egypt</span>
+        </span>
+        <span property="Geo" typeof="GeoCoordinates">
+            <span property="latitude">38.5323</span> 
+            <span property="longitude">77.0040</span> 
+        </span>
+    </div>
+
+
+    <script src="javascribt/index.js">
+    </script>
+    <script>
+        let worker = new Worker("./worker.js")
+        let sum = document.getElementById("sum");
+        let bg = document.getElementById("bg");
+        sum.onclick = function () {
+            worker.postMessage("")
+        }
+        worker.onmessage = function (message) {
+            console.log(message);
+            alert(message.data);
+        }
+
+
+        bg.onclick = function () {
+            if (document.body.style.background !== 'green') {
+                document.body.style.background = "green";
+            } else {
+                document.body.style.background = "blue";
+
+            }
+        }
+
+        let worker2 = new Worker("./multi.js")
+        let mult = document.getElementById("mult");
+        let bg2 = document.getElementById("bg2");
+        mult.onclick = function () {
+            worker2.postMessage("")
+        }
+        worker2.onmessage = function (message) {
+            console.log(message);
+            alert(message.data);
+        }
+
+
+        bg2.onclick = function () {
+            if (document.body.style.background !== 'red') {
+                document.body.style.background = "red";
+            } else {
+                document.body.style.background = "tomato";
+
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+.hide{
+    display: none;
+}
+
+
+a{
+    padding: 20px;
+    text-decoration: none;
+    background-color: tomato;
+    color: white;
+    display: block;
+    width: fit-content;
+    margin-top: 50px;
+    border-radius: 20px;
+}
+
+.box{
+    display: inline;
+}
+
+table{
+    border: 2px solid red;
+}
+
+#userName:invalid{
+    border: 2px solid red;
+}
+#userName:focus{
+    border: 2px solid blue;
+}
+#userName:valid{
+    border: 2px solid green;
+}
